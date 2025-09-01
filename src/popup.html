@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kick Category Blocker</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="icons/icon32.png" alt="Icon" class="icon">
+            <h1>Kick Category Blocker</h1>
+        </div>
+
+        <div class="section">
+            <h2>Add Category to Block</h2>
+            <div class="input-group">
+                <input type="text" id="categoryInput" placeholder="Enter category name (e.g., League of Legends)">
+                <button id="addButton">Add</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Blocked Categories</h2>
+            <div id="blockedList" class="blocked-list">
+                <div class="no-categories">No categories blocked yet</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Popular Categories</h2>
+            <div class="popular-categories">
+                <button class="category-btn" data-category="League of Legends">League of Legends</button>
+                <button class="category-btn" data-category="Fortnite">Fortnite</button>
+                <button class="category-btn" data-category="Just Chatting">Just Chatting</button>
+                <button class="category-btn" data-category="Valorant">Valorant</button>
+                <button class="category-btn" data-category="Counter Strike 2">Counter Strike 2</button>
+                <button class="category-btn" data-category="World of Warcraft">World of Warcraft</button>
+                <button class="category-btn" data-category="Apex Legends">Apex Legends</button>
+                <button class="category-btn" data-category="Grand Theft Auto V">Grand Theft Auto V</button>
+                <button class="category-btn" data-category="Knight Online">Knight Online</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Developed by Kuuw</p>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

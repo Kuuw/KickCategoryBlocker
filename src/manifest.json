@@ -1,0 +1,52 @@
+{
+    "manifest_version": 3,
+    "name": "Kick Category Blocker",
+    "version": "1.0.0",
+    "description": "Block streams from specific categories on Kick.com",
+    "permissions": [
+        "storage",
+        "activeTab"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Kick Category Blocker",
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "32": "icons/icon32.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://kick.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "icons": {
+        "16": "icons/icon16.png",
+        "32": "icons/icon32.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "icons/*"
+            ],
+            "matches": [
+                "https://kick.com/*"
+            ]
+        }
+    ],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{0199053a-7c02-7097-8be2-f358b3baaebd}"
+        }
+    }
+}
