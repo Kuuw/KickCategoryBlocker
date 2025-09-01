@@ -72,25 +72,39 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     function renderBlockedList() {
+        // Clear existing content
+        blockedList.innerHTML = '';
+
         if (blockedCategories.length === 0) {
-            blockedList.innerHTML = '<div class="no-categories">No categories blocked yet</div>';
+            const noCategories = document.createElement('div');
+            noCategories.className = 'no-categories';
+            noCategories.textContent = 'No categories blocked yet';
+            blockedList.appendChild(noCategories);
             return;
         }
 
-        const html = blockedCategories.map(category => `
-            <div class="blocked-item">
-                <span class="blocked-item-name">${escapeHtml(category)}</span>
-                <button class="remove-btn" data-category="${escapeHtml(category)}">Remove</button>
-            </div>
-        `).join('');
+        // Create elements safely without innerHTML
+        blockedCategories.forEach(category => {
+            const blockedItem = document.createElement('div');
+            blockedItem.className = 'blocked-item';
 
-        blockedList.innerHTML = html;
+            const categoryName = document.createElement('span');
+            categoryName.className = 'blocked-item-name';
+            categoryName.textContent = category; // Safe text assignment
 
-        blockedList.querySelectorAll('.remove-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const category = button.getAttribute('data-category');
+            const removeButton = document.createElement('button');
+            removeButton.className = 'remove-btn';
+            removeButton.textContent = 'Remove';
+            removeButton.setAttribute('data-category', category);
+
+            // Add click event listener directly
+            removeButton.addEventListener('click', () => {
                 removeCategory(category);
             });
+
+            blockedItem.appendChild(categoryName);
+            blockedItem.appendChild(removeButton);
+            blockedList.appendChild(blockedItem);
         });
     }
 
@@ -134,12 +148,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         setTimeout(() => {
             message.remove();
         }, 2000);
-    }
-
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
     }
 
     addButton.addEventListener('click', () => {
